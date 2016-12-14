@@ -1,0 +1,52 @@
+extends layout
+
+block content
+  
+  div(class='well')
+    table(class='table')
+        tr
+            th(rowspan='4') ALUMNOS 
+            td 
+                a(href='AlumnoCreate') Crear
+        tr
+            td  
+                a(href='AlumnoRead') Leer
+        tr
+            td 
+                a(href='AlumnoUpdate') Actualizar
+        tr
+            td 
+                p
+                    a(href='AlumnoDelete') Borrar 
+                
+        tr
+            th(rowspan='4') PROFESORES
+            td 
+                a(href='ProfesorCreate') Crear
+        tr
+            td 
+                a(href='ProfesorRead') Leer
+        tr
+            td 
+                a(href='ProfesorUpdate') Actualizar
+        tr
+            td 
+                p
+                    a(href='ProfesorDelete') Borrar
+
+         tr
+            th(rowspan='4') ASIGNATURAS 
+            td 
+                a(href='AsignaturaCreate') Crear
+        tr
+            td 
+                a(href='AsignaturaRead') Leer
+        tr
+            td 
+                a(href='AsignaturaUpdate') Actualizar
+        tr
+            td 
+                p
+                    a(href='AsignaturaDelete') Borrar
+               
+    

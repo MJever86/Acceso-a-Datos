@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2 Seleccione el alumno a eliminar:
+  div(class='well')
+    table(class='table')
+        tr
+            th ID
+            th Nombre
+            th Apellidos
+        //- 
+            Esto es un comentario
+            multilinea. Para terminar, hay
+            que poner otro elemento (como el each
+            de debajo). 
+        each alumno in alumnos
+            tr
+                td #{alumno.id}  
+                td #{alumno.nombre}
+                td #{alumno.apellido}
+                td 
+                    form(method='post')
+                        button(name='id' value='#{alumno._id}' class='btn btn-danger' type='submit') Eliminar

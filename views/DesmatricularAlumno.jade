@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h2 Matriculación de alumnos:
+  div(class='well')
+    form(method='post')
+        button(type='submit' class='btn btn-danger') Eliminar seleccion
+        table(class='table' id='tabla')
+            tr
+                th marcar
+                th id
+                th nombre
+                th apellido
+                th email
+                th inicio
+                th fin
+                th asignatura
+            each matricula, i in matriculas
+                tr
+                    td 
+                        input(type='checkbox' name='id' value="#{matricula._id}")
+                    td #{matricula.id}
+                    td #{matricula.nombreAlumno}
+                    td #{matricula.apellido}
+                    td #{matricula.email}
+                    td #{matricula.inicio}
+                    td #{matricula.fin}
+                    td #{matricula.nombreAsignatura}
+                        //select( class="selectpicker" name='matricula')
+                            option(value="#{matricula.nombreAsignatura}") #{matricula.nombreAsignatura}

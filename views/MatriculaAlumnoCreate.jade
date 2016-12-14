@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h2 Matriculación de Alumnos:
+  div(class='well')
+    table(class='table')
+            tr               
+                th id
+                th nombre
+                th apellido
+                th email
+                th asignatura
+                th inicio
+                th fin
+                th matricular
+            each alumno, i in alumnos
+                tr
+                
+                    td #{alumno.id}
+                    td #{alumno.nombre}
+                    td #{alumno.apellido}
+                    td #{alumno.email}
+                    td
+                        form(method='post')
+                            select(class="selectpicker" name='asignatura')
+                                each asignatura, i in asignaturas
+                                    option(value="#{asignatura.nombre}"+","+"#{asignatura.ciclo}"+","+"#{asignatura.curso}") #{asignatura.nombre}
+                            td
+                                input(name='inicio',id='fechaInicio'+i class='form-control',type='text' placeholder="2016" onclick="mostrarCalendarioInicio("+i+")" required)
+                            td
+                                input(name='fin',id='fechaFin'+i class='form-control',type='text' placeholder="2017" onclick="mostrarCalendarioFin("+i+")" required)
+                            td 
+                                button(name='alumno' value="#{alumno.id}"+","+"#{alumno.nombre}"+","+"#{alumno.apellido}"+","+"#{alumno.email}" class='btn btn-success' type='submit') Matricular

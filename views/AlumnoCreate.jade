@@ -1,0 +1,25 @@
+extends layout
+
+block content
+    
+    form(method='post')
+        div(class='form-group')
+            label(for='iden') ID
+            input(id='iden',name='iden', class='form-control',type='number',required) 
+        div(class='form-group')
+            label(for='nombre') Nombre:
+            input(id='nombre',name='nombre',class='form-control',type='text',required) 
+        div(class='form-group')
+            label(for='apellidos') Apellidos:
+            input(id='apellidos',name='apellido',class='form-control',type='text',required)
+        div(class='form-group')
+            label(for='email') Email:
+            input(id='email',name='email', class='form-control',type='email',required)
+        div(class='form-group')
+            button(type='submit') Enviar
+
+    //- Necesito estos cuatro campos:
+        id
+        apellido
+        nombre
+        email 

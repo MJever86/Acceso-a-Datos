@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  h2 Listado de Matriculas de Profesores: 
+  div(class='well')
+    form(method='post')
+        button(type='submit' class='btn btn-success') Actualizar seleccion
+        table(class='table update')
+            tr
+                th
+                th marcar
+                th id
+                th nombre
+                th apellido
+                th email
+                th inicio
+                th fin
+                th asignatura
+                th horas
+            each matricula, i in matriculas
+                tr
+                    td
+                        input(type='hidden' name='_id' id='id'+i value='#{matricula._id}' disabled='false')
+                    td 
+                        input(type='checkbox' name='id_json' value="#{matricula._id}" onClick='metodoMatriculaProfesor('+i+')')
+                    td 
+                        input(type='text' name='iden' id='iden'+i value="#{matricula.id}" disabled='true' required)
+                    td 
+                        input(type='text' name='nombre' id='nombre'+i value="#{matricula.nombreProfesor}" disabled='true' required)
+                    td
+                        input(type='text' name='apellido' id='apellido'+i value='#{matricula.apellido}' disabled='true' required)
+                    td 
+                        input(type='email' name='email' id='email'+i value='#{matricula.email}' disabled='true' required)
+                    td 
+                        input(type='text' name='inicio' id='inicio'+i value='#{matricula.inicio}' disabled='true' required)
+                    td 
+                        input(type='text' name='fin' id='fin'+i value='#{matricula.fin}' disabled='true' required)
+                    td 
+                        input(type='number' name='horas' id='horas'+i value='#{matricula.horas}' disabled='true' required)
+                    td 
+                        select(name='asignatura' id='asignatura'+i disabled='true')
+                            each asignatura, i in asignaturas
+                                option(value="#{asignatura.nombre}"+","+"#{asignatura.ciclo}"+","+"#{asignatura.curso}") #{asignatura.nombre}
+                                if matricula.nombreAsignatura == asignatura.nombre
+                                    option(value="#{asignatura.nombre}"+","+"#{asignatura.ciclo}"+","+"#{asignatura.curso}" selected='selected') #{asignatura.nombre}

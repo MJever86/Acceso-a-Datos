@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h2 Insertar Asignatura: 
+    form(method='POST')
+        div(class='form-group')
+            label(for='nombre') Nombre
+            input(name='nombre',class='form-control',type='text', required)
+        div(class='form-group')
+            label(for='ciclo') Ciclo
+            input(name='ciclo',class='form-control',type='text', required)
+        div(class='form-group')
+            label(for='curso') Curso
+            input(name='curso',class='form-control',type='number', required)
+        div(class='form-group')
+            button(type='submit') Enviar

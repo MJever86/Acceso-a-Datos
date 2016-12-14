@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h2 Listado de profesores:
+  div(class='well')
+    form(method='post')
+        button(type='submit' class='btn btn-success') Actualizar seleccion
+        table(class='table')
+            tr
+                th
+                th marcar
+                th id
+                th nombre
+                th apellido
+                th email
+            each profesor, i in profesores
+                tr
+                    td
+                        input(type='hidden' name='_id' id='id'+i value='#{profesor._id}' disabled='false')
+                    td 
+                        input(type='checkbox' name='id_json' value="#{profesor._id}" onClick='metodoActualizar('+i+')')
+                    td 
+                        input(type='text' name='iden' id='iden'+i value="#{profesor.id}" disabled='true' required)
+                    td
+                        input(type='text' name='nombre' id='nombre'+i value='#{profesor.nombre}' disabled='true' required)
+                    td 
+                        input(type='text' name='apellido' id='apellido'+i value='#{profesor.apellido}' disabled='true' required)
+                    td 
+                        input(type='text' name='email' id='email'+i value='#{profesor.email}' disabled='true' required)
+     

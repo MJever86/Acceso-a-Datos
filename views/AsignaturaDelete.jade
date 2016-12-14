@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h2 Borrar Asignaturas:
+  div(class='well')
+    form(method='post')
+        button(type='submit' class='btn btn-danger') Eliminar seleccion
+        table(class='table')
+            tr
+                th marcar
+                th nombre
+                th ciclo
+                th curso
+            each asignatura, i in asignaturas
+                tr
+                    td 
+                        input(type='checkbox' name='id' value="#{asignatura._id}")
+                    td #{asignatura.nombre} 
+                    td #{asignatura.ciclo}
+                    td #{asignatura.curso}

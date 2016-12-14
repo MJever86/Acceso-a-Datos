@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2 Listado de alumnos:
+  div(class='well')
+    input(type="text" id="myInput" onkeyup="buscar()" placeholder="buscar por nombre")
+    table(class='table' id='tabla')
+        tr
+            th ID
+            th Nombre
+            th Apellidos
+            th Email
+        //- 
+            Esto es un comentario
+            multilinea. Para terminar, hay
+            que poner otro elemento (como el each
+            de debajo). 
+        each alumno in alumnos
+            tr
+                td #{alumno.id}  
+                td #{alumno.nombre}
+                td #{alumno.apellido}
+                td #{alumno.email}

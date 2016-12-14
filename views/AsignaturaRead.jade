@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h2 Listado de asignaturas:
+  div(class='well')
+    table(class='table')
+        tr
+            th nombre
+            th ciclo
+            th curso
+        each asignatura, i in asignaturas
+            tr
+                td #{asignatura.nombre}  
+                td #{asignatura.ciclo}
+                td #{asignatura.curso}

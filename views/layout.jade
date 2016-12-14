@@ -1,0 +1,209 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset="UTF-8")
+    script(src="https://code.jquery.com/jquery-3.1.1.min.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
+    script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
+
+    
+    //barra de menu responsiva
+    nav(class="navbar navbar-inverse navbar-fixed-top")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false")  
+                    span(class="icon-bar")
+                    span(class="icon-bar")
+                    span(class="icon-bar")
+        div(class="collapse navbar-collapse" id="bs-example-navbar-collapse-1")
+            ul(class="nav navbar-nav")
+                li(class="active")
+                    a(href="/") Gestión Académica
+                li(class="dropdown")
+                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Alumnos
+                        span(class="caret")
+                        ul(class="dropdown-menu")
+                            li
+                                a(href="/AlumnoCreate") Crear
+                            li
+                                a(href="/AlumnoRead") Leer
+                            li
+                                a(href="/AlumnoUpdate") Actualizar
+                            li
+                                a(href="/AlumnoDelete") Borrar       
+        
+                li(class="dropdown")
+                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Profesor
+                        span(class="caret")
+                            ul(class="dropdown-menu")
+                                li
+                                    a(href="/ProfesorCreate") Crear
+                                li
+                                    a(href="/ProfesorRead") Leer
+                                li
+                                    a(href="/ProfesorUpdate") Actualizar
+                                li
+                                    a(href="/ProfesorDelete") Borrar 
+                                
+                li(class="dropdown")
+                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Asignatura
+                        span(class="caret")
+                            ul(class="dropdown-menu")
+                                li
+                                    a(href="/AsignaturaCreate") Crear
+                                li
+                                    a(href="/AsignaturaRead") Leer
+                                li
+                                    a(href="/AsignaturaUpdate") Actualizar
+                                li
+                                    a(href="/AsignaturaDelete") Borrar
+                
+                li(class="dropdown")
+                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Matriculación Alumnos
+                        span(class="caret")
+                            ul(class="dropdown-menu")
+                                li
+                                    a(href="/MatriculaAlumnoCreate") Matricular Alumno
+                                li
+                                    a(href="/MatriculaAlumnoRead") Alumnos Matriculados
+                                li
+                                    a(href="/MatriculaAlumnoUpdate") Actualizar Matricula Alumnos
+                                li
+                                    a(href="/DesmatricularAlumno") Desmatricular Alumnos
+
+                li(class="dropdown")
+                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Matriculación Profesores
+                        span(class="caret")
+                            ul(class="dropdown-menu")
+                                li
+                                    a(href="/MatriculaProfesorCreate") Matricular Profesores
+                                li
+                                    a(href="/MatriculaProfesorRead") Profesores Matriculados
+                                li
+                                    a(href="/MatriculaProfesorUpdate") Actualizar Matricula Profesores
+                                li
+                                    a(href="/DesmatricularProfesor") Desmatricular Profesores
+
+                    
+   
+    script.
+        //funcion para buscar alumnos o profesores 
+        function buscar(){
+            //con cada pulsacion recorremos la tabla y renderizamos solo las coincidencias
+                var input, filter, table, tr, td, i;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("tabla");
+                tr = table.getElementsByTagName("tr");
+
+                for (i = 0; i < tr.length; i++) {
+                    td = tr[i].getElementsByTagName("td")[1];
+                    if (td) {
+                        if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        }else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        //cambiamos el estado al hacer click en el checkbox
+
+         function metodoActualizar(i){
+            if(document.getElementById("nombre"+i).disabled==true){
+                document.getElementById("nombre"+i).disabled=false
+                document.getElementById("apellido"+i).disabled=false
+                document.getElementById("email"+i).disabled=false
+                document.getElementById("id"+i).disabled=false
+                document.getElementById("iden"+i).disabled=false
+            }else{
+                document.getElementById("nombre"+i).disabled=true
+                document.getElementById("apellido"+i).disabled=true
+                document.getElementById("email"+i).disabled=true
+                document.getElementById("id"+i).disabled=true
+                document.getElementById("iden"+i).disabled=true
+            }
+        }
+        function metodoAsignatura(i){
+            if(document.getElementById("nombre"+i).disabled==true){
+                document.getElementById("nombre"+i).disabled=false
+                document.getElementById("ciclo"+i).disabled=false
+                document.getElementById("curso"+i).disabled=false
+                
+            }else{
+                document.getElementById("nombre"+i).disabled=true
+                document.getElementById("ciclo"+i).disabled=true
+                document.getElementById("curso"+i).disabled=true
+                
+            }
+        }
+        function metodoMatricula(i){
+            if(document.getElementById("nombre"+i).disabled==true){
+                document.getElementById("nombre"+i).disabled=false
+                document.getElementById("apellido"+i).disabled=false
+                document.getElementById("email"+i).disabled=false
+                document.getElementById("iden"+i).disabled=false
+                document.getElementById("inicio"+i).disabled=false
+                document.getElementById("fin"+i).disabled=false
+                document.getElementById("asignatura"+i).disabled=false
+                
+            }else{
+                document.getElementById("nombre"+i).disabled=true
+                document.getElementById("apellido"+i).disabled=true
+                document.getElementById("email"+i).disabled=true
+                document.getElementById("iden"+i).disabled=true
+                document.getElementById("inicio"+i).disabled=true
+                document.getElementById("fin"+i).disabled=true
+               document.getElementById("asignatura"+i).disabled=true
+                
+            }
+            
+        }
+        function metodoMatriculaProfesor(i){
+            if(document.getElementById("nombre"+i).disabled==true){
+                document.getElementById("nombre"+i).disabled=false
+                document.getElementById("apellido"+i).disabled=false
+                document.getElementById("email"+i).disabled=false
+                document.getElementById("iden"+i).disabled=false
+                document.getElementById("inicio"+i).disabled=false
+                document.getElementById("fin"+i).disabled=false
+                document.getElementById("asignatura"+i).disabled=false
+                document.getElementById("horas"+i).disabled=false
+                
+            }else{
+                document.getElementById("nombre"+i).disabled=true
+                document.getElementById("apellido"+i).disabled=true
+                document.getElementById("email"+i).disabled=true
+                document.getElementById("iden"+i).disabled=true
+                document.getElementById("inicio"+i).disabled=true
+                document.getElementById("fin"+i).disabled=true
+                document.getElementById("asignatura"+i).disabled=true
+                document.getElementById("horas"+i).disabled=true
+            }
+            
+        }
+        //al mostrar el calendario solo podremos matricular con la fecha actual o en adelante. 
+        function mostrarCalendarioInicio(i){
+            $( "#fechaInicio"+i).datepicker({ minDate: 0 });
+            $("#fechaInicio"+i).datepicker().datepicker("show");
+        }
+        function mostrarCalendarioFin(i){
+            $("#fechaFin"+i).datepicker().datepicker("show");
+            
+        }
+
+    link(rel='stylesheet', href='//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css')           
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' )        
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body 
+    div(class='container')
+      div(class='jumbotron')
+        h1(align='center') Bienvenido a Gestión Académica 
+        
+      block content 
+
+      p
+        a(href='/') Volver al inicio  
+      footer(class='well') Copyleft 2º DAM (Mª José Rodríguez Martínez)
+    

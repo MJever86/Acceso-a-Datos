@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h2 Lista de asignaturas:
+  div(class='well')
+    form(method='post')
+        button(type='submit' class='btn btn-success') Actualizar seleccion
+        table(class='table')
+            tr
+                th
+                th marcar
+                th nombre
+                th ciclo
+                th curso
+            each asignatura, i in asignaturas
+                tr
+                    td
+                        input(type='hidden' name='_id' id='id'+i value='#{asignatura._id}' disabled='false')
+                    td 
+                        input(type='checkbox' name='id_json' value="#{asignatura._id}" onClick='metodoAsignatura('+i+')')
+                    td 
+                        input(type='text' name='nombre' id='nombre'+i value="#{asignatura.nombre}" disabled='true' required)
+                    td
+                        input(type='text' name='ciclo' id='ciclo'+i value='#{asignatura.ciclo}' disabled='true' required)
+                    td 
+                        input(type='text' name='curso' id='curso'+i value='#{asignatura.curso}' disabled='true' required)

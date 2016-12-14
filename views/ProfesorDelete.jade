@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2 Seleccione el profesor a eliminar:
+  div(class='well')
+    table(class='table')
+        tr
+            th ID
+            th Nombre
+            th Apellidos
+        //- 
+            Esto es un comentario
+            multilinea. Para terminar, hay
+            que poner otro elemento (como el each
+            de debajo). 
+        each profesor in profesores
+            tr
+                td #{profesor.id}  
+                td #{profesor.nombre}
+                td #{profesor.apellido}
+                td 
+                    form(method='post')
+                        button(name='id' value='#{profesor._id}' class='btn btn-danger' type='submit') Eliminar
